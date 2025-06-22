@@ -1,0 +1,2 @@
+# FoxCoin-Token
+FoxCoin-Token
