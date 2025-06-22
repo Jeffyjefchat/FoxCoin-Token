@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract FoxCoin is ERC20, Ownable {
+    uint256 public constant INITIAL_SUPPLY = 1_000_000_000 * 10 ** 18;
+
+    address public piGateway;
+    bool public gatewayLocked;
+
+    event PiGatewayUpdated(address indexed previous, address indexed newGateway);
+    event GatewayLocked();
+
+    constructor() ERC20("FoxCoin", "FOX") Ownable(msg.sender) {
+        _mint(msg.sender, INITIAL_SUPPLY);
+    }
+
+    function setPiGateway(address newGateway) external onlyOwner {
+        require(!gatewayLocked, "Gateway is locked forever");
+        require(newGateway != address(0), "Cannot set zero address");
+        require(newGateway.code.length > 0, "Must be a deployed contract");
+        emit PiGatewayUpdated(piGateway, newGateway);
+        piGateway = newGateway;
+    }
+
+    function lockGatewayForever() external onlyOwner {
+        require(!gatewayLocked, "Already locked");
+        gatewayLocked = true;
+        emit GatewayLocked();
+    }
+}

@@ -1,0 +1,13 @@
+Field,Value
+Token Name,FoxCoin
+Token Symbol,FOX
+Total Supply,"1,000,000,000"
+Contract Address,0x8ADfeb1dA951aFD5BF15A60FD420395Fb66616ba
+Deployer Address,0x5E62b20BaBF42e3af0D377cf1649e4a50B1c1a11
+Initial Owner,0x5E62b20BaBF42e3af0D377cf1649e4a50B1c1a11
+Verified on Etherscan,Yes
+Compiler Version,v0.8.20+commit.a1b79de6
+Decimals,18
+Deployed On,Ethereum Mainnet
+Wallet Balance,"1,000,000,000 FOX"
+Token Visible in Wallet,Yes
